@@ -11,7 +11,7 @@ const lineConfig = {
     channelSecret: env.SECRET_TOKEN
 }
 
-app.post('/webhook', line.middlewere(lineConfig), async (req, res) => {
+app.post('/webhook', line.middleware(lineConfig), async (req, res) => {
     try {
         const events = req.body.events
         console.log('evemt=>>>>',events)
