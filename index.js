@@ -31,8 +31,16 @@ app.post('/webhook', line.middleware(lineConfig), async (req, res) => {
 });
 
 const handleEvent = async (event) => {
-    console.log(event)
-    return client.replyMessage(event.replyToken,{ type:'text',text:'Test' })
+    // 
+    if(event.type !== 'message' || event.message.type !== 'text'){
+        return null;
+    }
+    else if (event.type === 'message'){
+        
+        return client.replyMessage(event.replyToken,{ type:'text',text:'Test' }); //reply message   
+    }
+    // return client.replyMessage(event.replyToken,{ type:'text',text:'Test' }); //reply message
+    
     }
 
 
